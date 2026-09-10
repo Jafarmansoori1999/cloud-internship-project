@@ -6,107 +6,39 @@
     <title>Cloud Internship Project</title>
 
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+        body { background: #f4f7fb; color: #222; }
+        header { background: #1e3a8a; color: white; padding: 20px 8%; display: flex; justify-content: space-between; align-items: center; }
+        header h2 { font-size: 24px; }
+        nav { display: flex; align-items: center; gap: 15px; }
+        nav a { color: white; text-decoration: none; }
+        .user-email { font-weight: bold; background: #2563eb; padding: 5px 12px; border-radius: 4px; font-size: 14px; }
+        .logout-btn { background: #dc3545; color: white; border: none; padding: 7px 15px; border-radius: 4px; cursor: pointer; font-weight: bold; }
+        .logout-btn:hover { background: #c82333; }
 
-        body {
-            background: #f4f7fb;
-            color: #222;
-        }
+        .hero { min-height: 200px; display: flex; align-items: center; justify-content: center; text-align: center; padding: 30px 20px; }
+        .hero-content { max-width: 700px; }
+        .hero h1 { font-size: 36px; color: #1e3a8a; margin-bottom: 10px; }
+        .hero p { font-size: 16px; color: #555; line-height: 1.6; }
 
-        header {
-            background: #1e3a8a;
-            color: white;
-            padding: 20px 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+        /* Form & Data Management Styling */
+        .main-container { max-width: 900px; margin: 20px auto; padding: 0 20px; }
+        .form-card { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); margin-bottom: 30px; }
+        .form-card h3 { color: #1e3a8a; margin-bottom: 15px; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: bold; }
+        .form-group input { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; }
+        .submit-btn { background: #2563eb; color: white; border: none; padding: 12px 20px; border-radius: 6px; cursor: pointer; font-weight: bold; width: 100%; }
+        .submit-btn:hover { background: #1d4ed8; }
 
-        header h2 {
-            font-size: 24px;
-        }
+        /* Data Table Styling */
+        .table-card { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
+        th { background: #1e3a8a; color: white; }
+        .file-link { color: #2563eb; text-decoration: none; font-weight: bold; }
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin-left: 25px;
-        }
-
-        .hero {
-            min-height: 450px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 40px 20px;
-        }
-
-        .hero-content {
-            max-width: 700px;
-        }
-
-        .hero h1 {
-            font-size: 48px;
-            color: #1e3a8a;
-            margin-bottom: 20px;
-        }
-
-        .hero p {
-            font-size: 18px;
-            color: #555;
-            line-height: 1.6;
-            margin-bottom: 30px;
-        }
-
-        .btn {
-            display: inline-block;
-            background: #2563eb;
-            color: white;
-            padding: 14px 30px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .cards {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            padding: 40px 8%;
-            flex-wrap: wrap;
-        }
-
-        .card {
-            background: white;
-            width: 280px;
-            padding: 30px;
-            text-align: center;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .card h3 {
-            color: #1e3a8a;
-            margin-bottom: 15px;
-        }
-
-        .card p {
-            color: #666;
-            line-height: 1.5;
-        }
-
-        footer {
-            background: #1e293b;
-            color: white;
-            text-align: center;
-            padding: 20px;
-            margin-top: 30px;
-        }
+        footer { background: #1e293b; color: white; text-align: center; padding: 20px; margin-top: 50px; }
     </style>
 </head>
 
@@ -116,58 +48,61 @@
         <h2>Cloud Internship</h2>
 
         <nav>
-            <a href="#">Home</a>
-            <a href="#">About</a>
-            <a href="#">Projects</a>
+            <span class="user-email" id="user-email-display">Loading...</span>
+            <button id="logout-btn" class="logout-btn">Logout</button>
         </nav>
     </header>
 
     <section class="hero">
         <div class="hero-content">
-
-            <h1>Welcome to My Cloud Internship Project</h1>
-            <p>Day 2: Successfully deployed on Vercel ☁️🚀</p>
-            <p>
-                This website is created as part of my Cloud Computing
-                internship. I am learning HTML, CSS, GitHub, VS Code
-                and cloud technologies.
-            </p>
-
-            <a href="#" class="btn">Explore Project</a>
-
+            <h1>Student Cloud Data & File Manager</h1>
+            <p>Successfully deployed on Vercel & Render ☁️🚀</p>
         </div>
     </section>
 
-    <section class="cards">
-
-        <div class="card">
-            <h3>☁ Cloud Computing</h3>
-            <p>
-                Learning the fundamentals of cloud computing,
-                services and deployment.
-            </p>
+    <div class="main-container">
+        <!-- Data Upload Form -->
+        <div class="form-card">
+            <h3>Add New Student Record</h3>
+            <form id="student-form">
+                <div class="form-group">
+                    <label for="student-name">Student Name</label>
+                    <input type="text" id="student-name" required placeholder="Enter name">
+                </div>
+                <div class="form-group">
+                    <label for="student-course">Course</label>
+                    <input type="text" id="student-course" required placeholder="Enter course">
+                </div>
+                <div class="form-group">
+                    <label for="student-file">Upload Document/Image (Optional)</label>
+                    <input type="file" id="student-file">
+                </div>
+                <button type="submit" class="submit-btn" id="save-btn">Save to Cloud Store</button>
+            </form>
         </div>
 
-        <div class="card">
-            <h3>💻 Web Development</h3>
-            <p>
-                Creating modern web pages using HTML and CSS.
-            </p>
+        <!-- Student Data Table -->
+        <div class="table-card">
+            <h3>Saved Student Records</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Course</th>
+                        <th>Uploaded File</th>
+                    </tr>
+                </thead>
+                <tbody id="student-table-body">
+                    <tr><td colspan="3">Loading records...</td></tr>
+                </tbody>
+            </table>
         </div>
-
-        <div class="card">
-            <h3>🚀 GitHub</h3>
-            <p>
-                Learning how to manage and upload projects
-                using Git and GitHub.
-            </p>
-        </div>
-
-    </section>
+    </div>
 
     <footer>
         <p>© 2026 My Internship Project | Created by Jafar</p>
     </footer>
 
+    <script type="module" src="./dashboard.js"></script>
 </body>
 </html>
